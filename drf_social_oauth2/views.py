@@ -93,7 +93,8 @@ class ConvertTokenView(CsrfExemptMixin, OAuthLibMixin, APIView):
         response = Response(data=json.loads(body), status=status)
 
         for k, v in headers.items():
-            response[k] = v
+            if k != 'PS1':
+                response[k] = v
         return response
 
 
